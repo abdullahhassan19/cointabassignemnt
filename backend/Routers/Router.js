@@ -4,7 +4,7 @@ const axios=require("axios")
 const approuter=Router()
 approuter.post("/postdata" , async (req,res)=>{
     // fetching data from api
-    const data = await axios.get("https://randomuser.me/api/?results=10");
+    const data = await axios.get("https://randomuser.me/api/?results=50");
     let alldata=data.data.results
 
     // running a loop to form an object and storing data in mongodb 

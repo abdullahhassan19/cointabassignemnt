@@ -4,12 +4,25 @@ import { useState, useEffect } from "react";
 import axios from "axios"
 function App() {
   const [data,setData]=useState([])
+  const [loading,setLoading]=useState(false)
   const handlefetch=()=>{
-    axios.post("http://localhost:8080/postdata").then((res)=>{
-      axios
-        .get("http://localhost:8080/getdata")
-        .then((res) => setData(res.data.data));
-    })
+
+    // show an alert if fetch is going on 
+    if (loading) {
+      alert("Please wait data is loading")
+    }
+    // else get the data
+    else{
+      setLoading(true);
+      axios.post("http://localhost:8080/postdata").then((res) => {
+        axios
+          .get("http://localhost:8080/getdata")
+          .then((res) => setData(res.data.data));
+            setLoading(false);
+      });
+      
+    }
+    
     
   }
   const handledelete=()=>{
