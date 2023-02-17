@@ -13,7 +13,7 @@ function App() {
     
   }
   const handledelete=()=>{
-    // confirm alert
+    // confirm to delete alert
     if (
       window.confirm("Are you sure you want to delete all the data from database?")
     ) {
@@ -35,15 +35,39 @@ function App() {
   },[data])
   return (
     <div className="App">
-      
-
       <button onClick={handlefetch}>Getdata</button>
-      <button onClick={handledelete}>deletedata</button>
-      {/* {
-        data.map((item)=>(
-          
-        ))
-      } */}
+      <button className="deletebtn" onClick={handledelete}>
+        deletedata
+      </button>
+      <div className="tablediv">
+        <table>
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th colSpan="2">Name</th>
+              <th>Email</th>
+              <th>Country</th>
+              <th>Postcode</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item) => {
+              return (
+                <tr key={item._id}>
+                  <td>
+                    <img src={item.thumbnail} />
+                  </td>
+                  <td>{item.first}</td>
+                  <td>{item.last}</td>
+                  <td>{item.email}</td>
+                  <td>{item.country}</td>
+                  <td>{item.postcode}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

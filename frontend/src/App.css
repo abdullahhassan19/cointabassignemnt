@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+button{
+  width: 100px;
+  height: 30px;
+  color: white;
+  background-color: green;
+}
+.deletebtn{
+   /* width: 100px;
+  height: 30px;
+  color: white; */
+  background-color: red;
+}
+.tablediv{
+  width: 70%;
+  margin: auto;
+  /* border: 1px solid red; */
+  text-align: center;
+  align-items: center;
+
+}
+table{
+  margin: auto;
+}
+table, th, td {
+  border: 1px solid black;
+}
