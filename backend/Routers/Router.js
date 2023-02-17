@@ -33,7 +33,7 @@ approuter.get("/getdata",async(req,res)=>{
 approuter.delete("/deletedata", async(req,res)=>{
     //deleting every all data from the mongodb file
     const deletedata = await dataModel.deleteMany();
-    res.send({ msg: "dedleted", data: deletedata });
+    res.send({ msg: "data deleted", data: deletedata });
 })
 
 

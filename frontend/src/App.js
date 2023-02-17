@@ -31,6 +31,7 @@ function App() {
       window.confirm("Are you sure you want to delete all the data from database?")
     ) {
       // delete data api will be called
+      
       // alert("Data will get deleted from data base")
       axios.delete("http://localhost:8080/deletedata")
       .then((res)=>console.log(res.data.msg))
