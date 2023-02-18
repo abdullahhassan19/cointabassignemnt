@@ -15,7 +15,7 @@ const Userdetails = () => {
         if (filter != "") {
           let filtereddata = data.filter((item) => item.country === filter);
           console.log(filtereddata);
-          setData(filtereddata);
+        //   setData(filtereddata);
         } else {
           getdata();
         }
