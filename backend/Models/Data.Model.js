@@ -1,4 +1,5 @@
 const mongoose =require("mongoose")
+
 const schema = mongoose.Schema({
   gender: String,
   title: String,
@@ -9,6 +10,6 @@ const schema = mongoose.Schema({
   email: String,
   postcode: String,
 });
-
+//storing data in mongodb with name "cointabassignment"
 const dataModel = mongoose.model("cointabassignment", schema);
 module.exports = { dataModel };

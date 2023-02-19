@@ -6,6 +6,9 @@ const Userdetails = () => {
     const [filter,setFilter]=useState("")
     const [page, setpage] = useState(1);
     const [limit,setLimit]=useState(10)
+
+
+    //fetch function with filter and page
     const getdata=(filter,page)=>{
       
         axios
@@ -15,13 +18,14 @@ const Userdetails = () => {
          
            
     }
+
+    // updating filter state function
     const handlefilter=(e)=>{
-      setpage()
+      setpage(1)
       setFilter(e.target.value)
     }
     useEffect(()=>{
         getdata(filter,page);
-        // setLimit(data.length/10)
     },[filter,page])
   return (
     <div>

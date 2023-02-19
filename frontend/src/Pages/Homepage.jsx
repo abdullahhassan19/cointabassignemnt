@@ -9,6 +9,8 @@ const Homepage = () => {
      const [loading, setLoading] = useState(false);
      const navigate = useNavigate();
 
+
+     // Fetch function
      const handlefetch = () => {
        // show an alert if fetch is going on
        if (loading) {
@@ -25,6 +27,8 @@ const Homepage = () => {
          });
        }
      };
+
+     //delete function
      const handledelete = () => {
        // confirm to delete alert
        if (
@@ -44,6 +48,8 @@ const Homepage = () => {
          console.log("Data was not delete from database.");
        }
      };
+
+     //navigating to userspage
      const userdetailspage = () => {
        navigate("/userdetails");
      };

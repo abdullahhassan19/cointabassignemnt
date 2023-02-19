@@ -14,6 +14,8 @@ app.use("/", approuter);
 app.get("/", (req, res) => {
   res.send("HomePage");
 });
+
+//connecting to data
 app.listen(PORT,async()=>{
     await connection ;
     try{
