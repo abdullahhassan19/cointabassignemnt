@@ -36,8 +36,8 @@ approuter.delete("/deletedata", async(req,res)=>{
     res.send({ msg: "data deleted", data: deletedata });
 })
 
-approuter.get("/filter",async(req,res)=>{
-    const filter=req.body
+approuter.get("/filter/:filter",async(req,res)=>{
+    const filter=req.params
     const data=await dataModel.find({filter})
 })
 
