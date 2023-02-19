@@ -3,30 +3,25 @@ import axios from "axios"
 const Userdetails = () => {
     const [data,setData]=useState([])
     const [filter,setFilter]=useState("")
-    const [filtereddataa,setFiltereddata]=useState([])
-    const getdata=()=>{
+    const getdata=(filter)=>{
+      if(filter){
+  
+        axios
+          .get(`http://localhost:8080/filter/${filter}`)
+          .then((res) => setData(res.data.data));
+      }
+      else{
+        console.log("else")
          axios
            .get("http://localhost:8080/getdata")
            .then((res) => setData(res.data.data));
+      }
+         
            
     }
-    const handlefilter=()=>{
-        console.log("called")
-        if (filter != "") {
-          let filtereddata = data.filter((item) => item.country === filter);
-          console.log(filtereddata);
-          setData(filtereddata);
-        } else {
-          getdata();
-        }
-        
-    }
     useEffect(()=>{
-        handlefilter()
+        getdata(filter);
     },[filter])
-    useEffect(() => {
-      getdata();
-    }, []);
   return (
     <div>
       <div>
@@ -36,6 +31,13 @@ const Userdetails = () => {
           <option value="Spain">Spain</option>
           <option value="Australia">Australia</option>
           <option value="Iran">Iran</option>
+          <option value="Norway">Norway</option>
+          <option value="Denmark">Denmark</option>
+          <option value="France">France</option>
+          <option value="United Kingdom">United Kingdom</option>
+          <option value="Ireland">Ireland</option>
+          <option value="Canada">Canada</option>
+          <option value="Turkey">Turkey</option>
         </select>
       </div>
       <div className="tablediv">

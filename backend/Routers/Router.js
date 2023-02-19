@@ -37,8 +37,11 @@ approuter.delete("/deletedata", async(req,res)=>{
 })
 
 approuter.get("/filter/:filter",async(req,res)=>{
-    const filter=req.params
-    const data=await dataModel.find({filter})
+
+    const {filter}=req.params
+    const data = await dataModel.find({ country: filter });
+    res.send({ msg: "success", data: data });
+
 })
 
 module.exports={approuter}
