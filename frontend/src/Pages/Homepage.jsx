@@ -21,13 +21,19 @@ const Homepage = () => {
        // else get the data
        else {
          setLoading(true);
-         axios.post("http://localhost:8080/postdata").then((res) => {
-           axios
-             .get("http://localhost:8080/getdata")
-             .then((res) => setData(res.data.data));
-           setLoading(false);
-           setIsData(true)
-         });
+         axios
+           .post(
+             "https://cointab-backend-production-953b.up.railway.app/postdata"
+           )
+           .then((res) => {
+             axios
+               .get(
+                 "https://cointab-backend-production-953b.up.railway.app/getdata"
+               )
+               .then((res) => setData(res.data.data));
+             setLoading(false);
+             setIsData(true);
+           });
        }
      };
 
@@ -43,7 +49,9 @@ const Homepage = () => {
 
          // alert("Data will get deleted from data base")
          axios
-           .delete("http://localhost:8080/deletedata")
+           .delete(
+             "https://cointab-backend-production-953b.up.railway.app/deletedata"
+           )
            .then((res) => console.log("Data delete successfull"));
          setData([]);
          setIsData(false);

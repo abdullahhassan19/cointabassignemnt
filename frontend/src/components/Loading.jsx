@@ -8,9 +8,6 @@ function Loading() {
         radius="20"
         color="green"
         ariaLabel="loading"
-
-        //   wrapperStyle
-        //   wrapperClass
       />
       <h1>Please Wait </h1>
     </div>

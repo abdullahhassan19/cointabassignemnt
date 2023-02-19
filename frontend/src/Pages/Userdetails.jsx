@@ -12,7 +12,9 @@ const Userdetails = () => {
     const getdata=(filter,page)=>{
       
         axios
-          .get(`http://localhost:8080/filter/?page=${page}&filter=${filter}`)
+          .get(
+            `https://cointab-backend-production-953b.up.railway.app/filter/?page=${page}&filter=${filter}`
+          )
           .then((res) => setData(res.data.data));
      
          
@@ -29,8 +31,8 @@ const Userdetails = () => {
     },[filter,page])
   return (
     <div>
-      <div>
-        <select onChange={handlefilter}>
+      <div className='filterdiv'>
+        <select onChange={handlefilter} className='filter'>
           <option value="">filter by country</option>
           <option value="India">India</option>
           <option value="Spain">Spain</option>
