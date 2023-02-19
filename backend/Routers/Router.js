@@ -48,7 +48,10 @@ approuter.get("/filter",async(req,res)=>{
         res.send({ msg: "success", data: data });
     }
     else{
-         const data = await dataModel.find();
+         const data = await dataModel
+           .find()
+           .skip(page > 0 ? (page - 1) * 10: 0)
+           .limit(10);;
          res.send({ msg: "success", data: data });
     }
     

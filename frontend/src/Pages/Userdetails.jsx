@@ -5,6 +5,7 @@ const Userdetails = () => {
     const [data,setData]=useState([])
     const [filter,setFilter]=useState("")
     const [page, setpage] = useState(1);
+    const [limit,setLimit]=useState(10)
     const getdata=(filter,page)=>{
       
         axios
@@ -20,6 +21,7 @@ const Userdetails = () => {
     }
     useEffect(()=>{
         getdata(filter,page);
+        // setLimit(data.length/10)
     },[filter,page])
   return (
     <div>
@@ -40,7 +42,11 @@ const Userdetails = () => {
         </select>
       </div>
       <div>
-        <Pagination page={page} setpage={(page) => setpage(page)} total={10} />
+        <Pagination
+          page={page}
+          setpage={(page) => setpage(page)}
+          total={limit}
+        />
       </div>
       <div className="tablediv">
         <table>

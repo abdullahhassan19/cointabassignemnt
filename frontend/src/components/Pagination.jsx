@@ -2,12 +2,34 @@ import React from "react";
 
 export default function Pagination({ page, setpage, total }) {
   const prev = (
-    <button disabled={page === 1} onClick={() => setpage(page - 1)}>
+    <button
+      disabled={page === 1}
+      onClick={() => setpage(page - 1)}
+      style={{
+        backgroundColor: "teal",
+        width: "3rem",
+        borderRadius: "5px",
+        height: "2rem",
+        spacing: "2rem",
+        margin: "auto",
+      }}
+    >
       PREV
     </button>
   );
   const Next = (
-    <button disabled={page === total} onClick={() => setpage(page + 1)}>
+    <button
+      disabled={page === total}
+      onClick={() => setpage(page + 1)}
+      style={{
+        backgroundColor: "teal",
+        width: "3rem",
+        borderRadius: "5px",
+        height: "2rem",
+        spacing: "2rem",
+        margin: "auto",
+      }}
+    >
       Next
     </button>
   );
