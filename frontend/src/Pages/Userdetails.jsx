@@ -1,31 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
+import Pagination from '../components/Pagination'
 const Userdetails = () => {
     const [data,setData]=useState([])
     const [filter,setFilter]=useState("")
-    const getdata=(filter)=>{
-      if(filter){
-  
+    const [page, setpage] = useState(1);
+    const getdata=(filter,page)=>{
+      
         axios
-          .get(`http://localhost:8080/filter/${filter}`)
+          .get(`http://localhost:8080/filter/?page=${page}&filter=${filter}`)
           .then((res) => setData(res.data.data));
-      }
-      else{
-        console.log("else")
-         axios
-           .get("http://localhost:8080/getdata")
-           .then((res) => setData(res.data.data));
-      }
+     
          
            
     }
+    const handlefilter=(e)=>{
+      setpage()
+      setFilter(e.target.value)
+    }
     useEffect(()=>{
-        getdata(filter);
-    },[filter])
+        getdata(filter,page);
+    },[filter,page])
   return (
     <div>
       <div>
-        <select onChange={(e) => setFilter(e.target.value)}>
+        <select onChange={handlefilter}>
           <option value="">filter by country</option>
           <option value="India">India</option>
           <option value="Spain">Spain</option>
@@ -39,6 +38,9 @@ const Userdetails = () => {
           <option value="Canada">Canada</option>
           <option value="Turkey">Turkey</option>
         </select>
+      </div>
+      <div>
+        <Pagination page={page} setpage={(page) => setpage(page)} total={10} />
       </div>
       <div className="tablediv">
         <table>

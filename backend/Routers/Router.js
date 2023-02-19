@@ -4,7 +4,7 @@ const axios=require("axios")
 const approuter=Router()
 approuter.post("/postdata" , async (req,res)=>{
     // fetching data from api
-    const data = await axios.get("https://randomuser.me/api/?results=50");
+    const data = await axios.get("https://randomuser.me/api/?results=500");
     let alldata=data.data.results
 
     // running a loop to form an object and storing data in mongodb 
@@ -36,11 +36,22 @@ approuter.delete("/deletedata", async(req,res)=>{
     res.send({ msg: "data deleted", data: deletedata });
 })
 
-approuter.get("/filter/:filter",async(req,res)=>{
-
-    const {filter}=req.params
-    const data = await dataModel.find({ country: filter });
-    res.send({ msg: "success", data: data });
+approuter.get("/filter",async(req,res)=>{
+    
+    const {filter,page}=req.query
+    console.log(filter,page)
+    if(page && filter){
+        const data = await dataModel
+          .find({ country: filter })
+          .skip(page > 0 ? (page - 1) *  10: 0)
+          .limit(10);
+        res.send({ msg: "success", data: data });
+    }
+    else{
+         const data = await dataModel.find();
+         res.send({ msg: "success", data: data });
+    }
+    
 
 })
 
