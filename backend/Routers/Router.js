@@ -49,7 +49,7 @@ approuter.delete("/deletedata", async(req,res)=>{
 approuter.get("/filter",async(req,res)=>{
     
     const {filter,page}=req.query
-    console.log(filter,page)
+    // console.log(filter,page)
     //retriving the data when filter is applied
     if(page && filter){
         const data = await dataModel
