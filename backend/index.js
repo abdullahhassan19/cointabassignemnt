@@ -22,6 +22,6 @@ app.listen(PORT,async()=>{
         console.log("Connected to db")
     }
     catch{
-        console.log("error in db")
+        // console.log("error in db")
     }   
 })
